@@ -1,0 +1,52 @@
+<!-- <div class="alert alert-danger" role="alert">
+    A simple danger alert—check it out!
+</div> -->
+<br>
+<div class="container bg-dark">
+    <div class="card">
+        <div class="card-header">
+            Hello <span style="font-weight: bolder; color: green;">{{name}} </span> , your pending tasks is <span class="
+                bg-success" style="font-weight: bolder; font-size: 35px;">{{getPendingTasksCount()}}</span>
+        </div>
+        <div class="row" style="margin:30px">
+            <div class="col-md-8">
+                <input type="text" #inputTitle (keyup.enter)="addTask(inputTitle.value)" placeholder="enter your task"
+                    class="form-control">
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" (click)="addTask(inputTitle.value)">Add</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="tasks.length==0">
+                            <td colspan="4" style="text-align: center;">
+                                No Tasks Found
+                            </td>
+                        </tr>
+                        <tr *ngFor="let task of tasks;let currentIndex=index">
+                            <th scope="row">{{currentIndex+1}}</th>
+                            <td [class.task-done]="task.IsDone">{{task.Title}}</td>
+                            <td>
+                                <input type="checkbox" [value]="task.IsDone" (change)="updateTask(task)">
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" (click)="deleteTask(currentIndex)">DELETE</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
